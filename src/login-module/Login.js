@@ -169,7 +169,7 @@ class Login extends React.Component{
                     <div class="container-login100">
                         <div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-50">
                                 <span class="login100-form-title p-b-33">
-                                    Account Login
+                                    Login
                                 </span>
                                 <div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
                                     <input class="input100" value = {this.state.username} type="text" name="username" placeholder="Username" onChange={this.usernameHandleChange}/>
