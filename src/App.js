@@ -14,6 +14,7 @@ class App extends PureComponent {
     return (
       <Router>
           <Switch>
+			<Route path='/' component={Login} />
             <Route path='/login' component={Login} />
             <Route path='/forgotPassword' component={ForgotPassword} />
             <Route path='/signUp' component={SignUp} />
