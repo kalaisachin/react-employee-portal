@@ -1,0 +1,99 @@
+.container-login200{
+    width: 1120px;
+    min-height: 100vh;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+    background: #e9faff;
+}
+.MRGNRGTLFT{
+    margin: 8px;
+}
+.wrap-login200{
+    width: 900px;
+    background: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+
+    box-shadow: 0 3px 20px 0px rgba(0, 0, 0, 0.1);
+    -moz-box-shadow: 0 3px 20px 0px rgba(0, 0, 0, 0.1);
+    -webkit-box-shadow: 0 3px 20px 0px rgba(0, 0, 0, 0.1);
+    -o-box-shadow: 0 3px 20px 0px rgba(0, 0, 0, 0.1);
+    -ms-box-shadow: 0 3px 20px 0px rgba(0, 0, 0, 0.1);
+}
+.p-b-20{
+    padding-bottom: 20px;
+}
+.p-t-20{
+    padding-top: 20px;
+}
+.p-b-10{
+    padding-bottom: 10px;
+}
+.p-a-10px{
+    padding: 5px;
+}
+.dataLabel{
+    width: 244px;
+}
+.dataLabelcontent{
+    width: 256px;
+}
+.border-right{
+    border-right: 2px solid #b7b7bd !important;
+}
+.border-left{
+    border-left: 2px solid #b7b7bd !important;
+}
+.border-bottom{
+    border-bottom: 2px solid #b7b7bd !important;
+}
+.border-top{
+    border-top: 2px solid #b7b7bd !important;
+}
+.MRGN5PX{
+    margin: 5px;
+}
+.headingLeftTag{
+    width: 450px;
+    text-align: center;
+}
+.headingRightTag{
+    width: 462px;
+    text-align: center;
+}
+.earning-tab{
+    width: 261px;
+    text-align: center;
+}
+.earning-amount-tab{
+    width: 189px;
+    text-align: center;
+}
+.deduction-tab{
+    width: 270px;
+    text-align: center;
+}
+.deduction-amount-tab{
+    width: 192px;
+    text-align: center;
+}
+.description-amount-table {
+    width: 888px;
+}
+.data-personal-table {
+    width: 888px;
+}
+.data-personal-label{
+    width: 169px;
+}
+.image-logo{
+    margin: 45px;
+    float: right;
+}

@@ -1,0 +1,79 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 40vmin;
+  pointer-events: none;
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@charset "UTF-8";
+/* CSS Document */
+
+#container {
+	padding: 10px 15px 15px;
+	font-family: 'Segoe UI', 'SegoeUI', Segoe\000020UI, Frutiger, 'Frutiger Linotype', 'Dejavu Sans', 'Helvetica Neue', Arial, sans-serif;
+	font-size: 13px;
+	color: #666;
+	line-height: 15px;
+}
+
+#container ul {
+	padding: 0;
+	margin: 0;
+	list-style: none;
+}
+
+#container li {
+	margin-top: 14px;
+}
+
+#container a {
+	color: #07c;
+	font-weight: 600;
+	text-decoration: none;
+}
+
+#container a:hover {
+	text-decoration: underline;
+}
+
+#container p {
+	margin: 0;
+}
+
+#container p + p {
+	margin-top: 3px;
+	font-size: 11px;
+}
+
+#container p:last-child {
+	margin-top: 0;
+}
+
+
