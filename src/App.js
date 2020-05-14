@@ -14,13 +14,13 @@ class App extends PureComponent {
     return (
       <Router>
           <Switch>
-			<Route path='/' component={Login} />
             <Route path='/login' component={Login} />
             <Route path='/forgotPassword' component={ForgotPassword} />
             <Route path='/signUp' component={SignUp} />
             <Route path='/home' component={Home} />
             <Route path='/updateProfile' component={UpdateProfile} />
             <Route path='/payslip' component={PaySlip} />
+			<Route path='' component={Login} />
         </Switch>
       </Router> 
     );
