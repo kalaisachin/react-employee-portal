@@ -58,9 +58,9 @@ class Login extends React.Component{
         const password = this.state.password;
         axios.get("http://localhost:8080/finduser/"+username,{})
         .then((res)=>{
-            if(res !== null && password === res.data[0].password){
+            if(res !== null && password === res.data.password){
                 localStorage.setItem("userData", res);
-                localStorage.setItem("userName", res.data[0].username);
+                localStorage.setItem("userName", res.data.username);
                 this.loggedIn();
             }else{
                 $.alert({
