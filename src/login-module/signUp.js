@@ -97,10 +97,6 @@ class SignUp extends Component{
             },
             
         }
-
-        //var inputParams = JSON.stringify(inputs);
-        //var baseURL = "http://localhost:8080/create/"+inputParams;
-        //console.log(baseURL);
         axios({
             method: 'post',
             url: 'http://citemployeeportal-env.eba-hh2rtxck.us-east-2.elasticbeanstalk.com/create/',
