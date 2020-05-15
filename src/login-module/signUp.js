@@ -103,7 +103,7 @@ class SignUp extends Component{
         //console.log(baseURL);
         axios({
             method: 'post',
-            url: 'http://localhost:8080/create/',
+            url: 'http://citemployeeportal-env.eba-hh2rtxck.us-east-2.elasticbeanstalk.com/create/',
             data: inputs
         })
         .then((res)=>{
@@ -139,12 +139,16 @@ class SignUp extends Component{
     checkUsernameAvailability = (e) => {
         this.setState({[e.target.name] : e.target.value});
         let username = $('#username').val();
+        console.log('gettting in '+username.length);
+        $('#username').removeClass('inp-loading-icon');
+        $('#username').removeClass('inp-available-icon');
+        $('#username').removeClass('inp-notavailable-icon');
         if(username.length >= 3){
             $('#username').addClass('inp-loading-icon');
-            axios.get("http://localhost:8080/checkUserAvailability/"+username,{})
+            axios.get("http://citemployeeportal-env.eba-hh2rtxck.us-east-2.elasticbeanstalk.com/checkUserAvailability/"+username,{})
                 .then((res)=>{
-                    console.log("length : "+ res.data.listLength);
-                    if(res.data.listLength == 0){
+                    console.log("length : "+ res.data);
+                    if(res.data == 0){
                         $('#username').removeClass('inp-loading-icon');
                         $('#username').removeClass('inp-notavailable-icon');
                         $('#username').addClass('inp-available-icon');
@@ -157,6 +161,7 @@ class SignUp extends Component{
                         
                 });
         }else{
+            console.log("getting in ... ");
             $('#username').removeClass('inp-loading-icon');
             $('#username').removeClass('inp-available-icon');
             $('#username').removeClass('inp-notavailable-icon');

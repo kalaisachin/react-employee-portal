@@ -56,7 +56,7 @@ class Login extends React.Component{
       handleSubmit(event) {
         const username = this.state.username;
         const password = this.state.password;
-        axios.get("http://localhost:8080/finduser/"+username,{})
+        axios.get("http://citemployeeportal-env.eba-hh2rtxck.us-east-2.elasticbeanstalk.com/finduser/"+username,{})
         .then((res)=>{
             if(res !== null && password === res.data.password){
                 localStorage.setItem("userData", res);
@@ -95,7 +95,7 @@ class Login extends React.Component{
         if(response.profileObj){
             let username = response.profileObj.email;
             username = username.split("@")[0];
-            axios.get("http://localhost:8080/checkUserAvailability/"+username,{})
+            axios.get("http://citemployeeportal-env.eba-hh2rtxck.us-east-2.elasticbeanstalk.com/checkUserAvailability/"+username,{})
                 .then((res)=>{
                     if(res.data.listLength == 0){
                         let alternativeEmail = response.profileObj.email;
@@ -117,7 +117,7 @@ class Login extends React.Component{
 
                         axios({
                             method: 'post',
-                            url: 'http://localhost:8080/create/',
+                            url: 'http://citemployeeportal-env.eba-hh2rtxck.us-east-2.elasticbeanstalk.com/create/',
                             data: inputs
                         })
                         .then((res)=>{

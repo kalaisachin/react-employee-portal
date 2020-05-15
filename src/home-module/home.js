@@ -34,7 +34,7 @@ class Home extends Component{
         if(localStorage.getItem("userData")){
             const userName= localStorage.getItem("userName");
             console.log(userName);
-            axios.get("http://localhost:8080/finduser/"+userName,{}).then((res)=>{
+            axios.get("http://citemployeeportal-env.eba-hh2rtxck.us-east-2.elasticbeanstalk.com/finduser/"+userName,{}).then((res)=>{
                 this.setState({
                     username : res.data.username,
                     firstName : res.data.firstName,

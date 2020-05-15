@@ -67,7 +67,7 @@ class UpdateProfile extends Component{
         if(localStorage.getItem("userData")){
             const userName= localStorage.getItem("userName");
             console.log(userName);
-            axios.get("http://localhost:8080/finduser/"+userName,{}).then((res)=>{
+            axios.get("http://citemployeeportal-env.eba-hh2rtxck.us-east-2.elasticbeanstalk.com/finduser/"+userName,{}).then((res)=>{
                 this.setState({
                         _id :  res.data._id,
                         username : res.data.username,
@@ -165,7 +165,7 @@ class UpdateProfile extends Component{
         console.log(inputs);
         axios({
             method: 'post',
-            url: 'http://localhost:8080/update/',
+            url: 'http://citemployeeportal-env.eba-hh2rtxck.us-east-2.elasticbeanstalk.com/update/',
             data: inputs
         })
         .then((res)=>{
