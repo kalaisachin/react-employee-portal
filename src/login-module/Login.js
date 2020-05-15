@@ -56,7 +56,7 @@ class Login extends React.Component{
       handleSubmit(event) {
         const username = this.state.username;
         const password = this.state.password;
-        axios.get("http://citemployeeportal-env.eba-hh2rtxck.us-east-2.elasticbeanstalk.com/finduser/"+username,{})
+        axios.get("https://citemployeeportal-env.eba-hh2rtxck.us-east-2.elasticbeanstalk.com/finduser/"+username,{})
         .then((res)=>{
             if(res !== null && password === res.data.password){
                 localStorage.setItem("userData", res);
