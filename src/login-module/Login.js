@@ -203,14 +203,14 @@ class Login extends React.Component{
 
                                     <Link to={'/signUp'}> Sign up </Link>
                                 </div>
-                                <div class="container-login100-form-btn m-t-20 m-l-116">
+                                {/* <div class="container-login100-form-btn m-t-20 m-l-116">
                                     <GoogleLogin
                                         clientId={'522617952584-apvgpkgsrk88ag9i2004i9tv3j8eu3kq.apps.googleusercontent.com'}
                                         onSuccess={responseGoogle}
                                         onFailure={responseGoogle}>
                                     <span class="google-login"> Login with Google</span>
                                     </GoogleLogin>
-                                </div>
+                                </div> */}
                         </div>
                     </div>
                 </div>
