@@ -52,7 +52,8 @@ class SignUp extends Component{
             communicationlevelError: '',
             timeavailabilityError: '',
             usernameAvailabilityCheck: '',
-            redirectState : false
+            redirectState : false,
+            userCheckAvailability: false
         }
         this.onChange = this.onChange.bind(this);
         this.doSignUp = this.doSignUp.bind(this);
@@ -77,48 +78,92 @@ class SignUp extends Component{
         const communicationlevel = this.state.communicationlevel;
         const timeavailability = this.state.timeavailability;
         const gender = this.state.gender;
-
-        var inputs = {
-            username : username,
-            emailId : email,
-            password : password,
-            confirmpassword : confirmpassword,
-            firstName : firstname,
-            lastName : lastname,
-            mobile : mobilenumber,
-            designation : designation,
-            rating : selfrating,
-            totalProjects : totalprojects,
-            experienceLevel : experiencelevel,
-            communicationLevel : communicationlevel,
-            availability : timeavailability,
-            userProfile : {
-                gender: gender
-            },
-            
-        }
-        axios({
-            method: 'post',
-            url: 'http://citemployeeportal-env.eba-hh2rtxck.us-east-2.elasticbeanstalk.com/create/',
-            data: inputs
-        })
-        .then((res)=>{
-            $.alert({
-                title: 'Success!',
-                content: 'Signed Up Successfully Please Login ... !',
-                theme: 'supervan',
-                buttons: {
-                    info: {
-                        btnClass: 'btn-blue',
-                        text: 'Ok'
+        if (username.length >= 3) {
+            if (this.userCheckAvailability === true){
+                if (password.length > 0 && confirmpassword.length > 0) {
+                    if (password === confirmpassword) {
+                        var inputs = {
+                            username : username,
+                            emailId : email,
+                            password : password,
+                            confirmpassword : confirmpassword,
+                            firstName : firstname,
+                            lastName : lastname,
+                            mobile : mobilenumber,
+                            designation : designation,
+                            rating : selfrating,
+                            totalProjects : totalprojects,
+                            experienceLevel : experiencelevel,
+                            communicationLevel : communicationlevel,
+                            availability : timeavailability,
+                            userProfile : {
+                                gender: gender
+                            },
+                            
+                        }
+                        axios({
+                            method: 'post',
+                            url: 'http://citemployeeportal-env.eba-hh2rtxck.us-east-2.elasticbeanstalk.com/create/',
+                            data: inputs
+                        })
+                        .then((res)=>{
+                            $.alert({
+                                title: 'Success!',
+                                content: 'Signed Up Successfully Please Login ... !',
+                                theme: 'supervan',
+                                buttons: {
+                                    info: {
+                                        btnClass: 'btn-blue',
+                                        text: 'Ok'
+                                    }
+                                }
+                            });
+                            this.doRedirect();
+                            }).catch((error)=>{
+                                $.alert({
+                                    title: 'Error !',
+                                    content: 'There is an Error in API call !',
+                                    theme: 'supervan',
+                                    buttons: {
+                                        info: {
+                                            btnClass: 'btn-blue',
+                                            text: 'Ok'
+                                        }
+                                    }
+                                });
+                            });
+                    } else {
+                        $.alert({
+                            title: 'Validation Error !',
+                            content: 'Password and Confirm Password did not match',
+                            theme: 'supervan',
+                            buttons: {
+                                info: {
+                                    btnClass: 'btn-blue',
+                                    text: 'Ok'
+                                }
+                            }
+                        });
                     }
+                    
+                } else {
+                    $.alert({
+                        title: 'Validation Error !',
+                        content: 'Password and Confirm Password is Mandatory',
+                        theme: 'supervan',
+                        buttons: {
+                            info: {
+                                btnClass: 'btn-blue',
+                                text: 'Ok'
+                            }
+                        }
+                    });
+
                 }
-            });
-            this.doRedirect();
-            }).catch((error)=>{
+            } else {
                 $.alert({
-                    title: 'Error !',
-                    content: 'There is an Error in API call !',
+                    title: 'Validation Error !',
+                    content: 'Username is already exist please choose another',
                     theme: 'supervan',
                     buttons: {
                         info: {
@@ -127,7 +172,21 @@ class SignUp extends Component{
                         }
                     }
                 });
+            }
+            
+        } else {
+            $.alert({
+                title: 'Validation Error !',
+                content: 'Username is Mandatory and length should be greater than two char',
+                theme: 'supervan',
+                buttons: {
+                    info: {
+                        btnClass: 'btn-blue',
+                        text: 'Ok'
+                    }
+                }
             });
+        }
     }
     onChange(e){
         this.setState({[e.target.name] : e.target.value});
@@ -145,10 +204,12 @@ class SignUp extends Component{
                 .then((res)=>{
                     console.log("length : "+ res.data);
                     if(res.data == 0){
+                        this.userCheckAvailability = true;
                         $('#username').removeClass('inp-loading-icon');
                         $('#username').removeClass('inp-notavailable-icon');
                         $('#username').addClass('inp-available-icon');
                     }else{
+                        this.userCheckAvailability = false;
                         $('#username').removeClass('inp-loading-icon');
                         $('#username').removeClass('inp-available-icon');
                         $('#username').addClass('inp-notavailable-icon');
@@ -177,7 +238,7 @@ class SignUp extends Component{
                                 </span>
                                 <div className="row">
                                     <div className="col-md-6 wrap-input100 validate-input" data-validate = "Enter valid Username">
-                                        <input className={'input100'} id="username" type="text" name="username" onChange={this.checkUsernameAvailability} placeholder="Username" />
+                                        <input className={'input100'} id="username" type="text" name="username" onChange={this.checkUsernameAvailability} placeholder="Username (Mandatory)" />
                                         <span className="focus-input100-1"></span>
                                         <span className="focus-input100-2"></span>
                                     </div>
@@ -189,12 +250,12 @@ class SignUp extends Component{
                                 </div>
                                 <div className="row">
                                     <div className="col-md-6 wrap-input100 rs1 validate-input" data-validate="Password is required">
-                                        <input className="input100" type="password" name="password" onChange={this.onChange} placeholder="Password" />
+                                        <input className="input100" type="password" name="password" onChange={this.onChange} placeholder="Password (Mandatory)" />
                                         <span className="focus-input100-1"></span>
                                         <span className="focus-input100-2"></span>
                                     </div>
                                     <div className="col-md-6 wrap-input100 rs1 validate-input" data-validate="Confirm Password is required">
-                                        <input className="input100" type="password" name="confirmpassword" onChange={this.onChange} placeholder="Confirm Password" />
+                                        <input className="input100" type="password" name="confirmpassword" onChange={this.onChange} placeholder="Confirm Password (Mandatory)" />
                                         <span className="focus-input100-1"></span>
                                         <span className="focus-input100-2"></span>
                                     </div>

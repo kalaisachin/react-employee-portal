@@ -469,7 +469,7 @@ class UpdateProfile extends Component{
                                                         <label>User Id</label>
                                                     </div>
                                                     <div class="col-md-6">
-                                                        <input type="text" class="form-control" onChange={this.onChange} name="username" value={this.state.username}/>
+                                                        <input type="text" class="form-control" onChange={this.onChange} name="username" value={this.state.username} disabled/>
                                                         <input type="hidden" class="form-control" onChange={this.onChange} name="_id" value={this.state._id}/>
                                                     </div>
                                                 </div>
